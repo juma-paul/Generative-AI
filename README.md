@@ -7,6 +7,9 @@
 
 An intelligent chatbot powered by OpenAI's API, designed to crawl any specified website and answer user questions based on the extracted content.
 
+## Presentation
+You can view the project presentation [here](https://docs.google.com/presentation/d/1NjRHNKfg-XD6yK6q7bkGfEJ5IkL9_faDU8TAODCfNQ8/edit#slide=id.p).
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -39,10 +42,8 @@ The Customer Support Chatbot is a Flask-based web application that combines web 
 
 ## Demo
 
-[Link to live demo](#) (Add your demo link here)
-
-![Chatbot Interface](path/to/screenshot1.png)
-![Example Conversation](path/to/screenshot2.png)
+![Chatbot Interface](./images/interface.png)
+![Example Conversation](./images/result.png)
 
 ## Built With
 
@@ -68,7 +69,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/customer-support-chatbot.git
+   git clone https://github.com/juma-paul/customer-support-chatbot.git
    cd customer-support-chatbot
    ```
 
@@ -95,38 +96,12 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 2. Run the crawler to extract website content:
    ```bash
-   python chatbot.py
+   python3 chatbot.py
    ```
 
-3. Start the Flask application:
-   ```bash
-   flask run
-   ```
+3. Open a web browser and navigate to `http://127.0.0.1:5000/`
 
-4. Open a web browser and navigate to `http://127.0.0.1:5000/`
-
-5. Enter your question in the chat interface and receive AI-powered responses based on the crawled content.
-
-## Project Structure
-
-```
-customer-support-chatbot/
-├── chatbot.py          # Main application script
-├── requirements.txt    # Python dependencies
-├── .env                # Environment variables (git-ignored)
-├── README.md           # Project documentation
-│
-├── templates/          # HTML templates
-│   ├── index.html      # Main page template
-│   └── result.html     # Result page template
-│
-├── text/               # Scraped text content
-│   └── domain_name/    # Domain-specific content
-│
-└── processed/          # Processed data files
-    ├── scraped.csv     # Initial processed data
-    └── embeddings.csv  # Data with embeddings
-```
+4. Enter your question in the chat interface and receive AI-powered responses based on the crawled content.
 
 ## How It Works
 
@@ -146,17 +121,17 @@ customer-support-chatbot/
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/my_feature`)
+3. Commit your changes (`git commit -m 'Add some my_feature'`)
+4. Push to the branch (`git push origin feature/my_feature`)
 5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/licenses/MIT) for details.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+Linkedln: [juma-paul](https://www.linkedin.com/in/juma-paul/)
 
-Project Link: [https://github.com/yourusername/customer-support-chatbot](https://github.com/yourusername/customer-support-chatbot)
+Project Link: [Customer Support Chatbot](https://github.com/juma-paul/customer-support-chatbot.git)

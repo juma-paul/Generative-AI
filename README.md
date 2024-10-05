@@ -42,8 +42,7 @@ The Customer Support Chatbot is a Flask-based web application that combines web 
 
 ## Demo
 
-![Chatbot Interface](./images/interface.png)
-![Example Conversation](./images/result.png)
+![Chatbot Interface](./flask-app/images/demo.png)
 
 ## Built With
 

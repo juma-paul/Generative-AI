@@ -2,16 +2,17 @@
 
 A sophisticated GPT-4 powered support assistant built using OpenAI API and Streamlit, offering an intelligent, interactive chat experience for users.
 
-## Presentation
-Please find the link to the presentation slides [here](https://docs.google.com/presentation/d/1efSl1jdeQtEUa-xRaKwTkuoht7bbX2plkDTUQRNYBnA/edit?usp=sharing). The slides provide an overview of the project, including its design, implementation, testing, and future enhancements.
-
 ![Chat Assistant Demo](./assets/demo.png)
 
 ## Project Overview
 
 This project demonstrates the creation of an AI-powered chatbot leveraging OpenAI's GPT-4 and Streamlit. The assistant responds to user inputs in real-time, providing helpful and intelligent responses, showcasing the potential of advanced language models in interactive applications.
 
-### Key Technologies
+## Presentation
+
+Please find the link to the presentation slides [here](https://docs.google.com/presentation/d/1efSl1jdeQtEUa-xRaKwTkuoht7bbX2plkDTUQRNYBnA/edit?usp=sharing). The slides provide an overview of the project, including its design, implementation, testing, and future enhancements.
+
+## Key Technologies
 
 - OpenAI GPT-4
 - Streamlit (for UI)
@@ -35,8 +36,8 @@ This project demonstrates the creation of an AI-powered chatbot leveraging OpenA
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/gpt-4-chat-assistant.git
-   cd gpt-4-chat-assistant
+   git clone https://github.com/juma-paul/customer-support-chatbot.git
+   cd customer-support-chatbot/gpt-4-chat-assistant
    ```
 
 2. Install required packages:
@@ -81,16 +82,20 @@ This project demonstrates the creation of an AI-powered chatbot leveraging OpenA
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/<your_new_feature>`)
+3. Commit your changes (`git commit -m 'Add some <commit message>'`)
+4. Push to the branch (`git push origin feature/<your_new_feature>`)
 5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://choosealicense.com/licenses/mit/)
+This project is licensed under the MIT License. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
 
 ## Acknowledgements
 
-- [OpenAI](https://openai.com/) for providing the GPT-4 API.
-- [Streamlit](https://streamlit.io/) for their excellent framework for building interactive web applications.
+- OpenAI for providing the GPT-4 API.
+- Streamlit for their excellent framework for building interactive web applications.
+
+## GitHub Repository
+
+Access the complete project and source code [here](https://github.com/juma-paul/customer-support-chatbot/tree/main/gpt4-mini-chatbot-streamlit).

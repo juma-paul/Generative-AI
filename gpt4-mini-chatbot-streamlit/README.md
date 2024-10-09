@@ -5,7 +5,7 @@ A sophisticated GPT-4 powered support assistant built using OpenAI API and Strea
 ## Presentation
 Please find the link to the presentation slides [here](https://docs.google.com/presentation/d/1efSl1jdeQtEUa-xRaKwTkuoht7bbX2plkDTUQRNYBnA/edit?usp=sharing). The slides provide an overview of the project, including its design, implementation, testing, and future enhancements.
 
-
+![Chat Assistant Demo](./assets/demo.png)
 
 ## Project Overview
 
@@ -25,9 +25,6 @@ This project demonstrates the creation of an AI-powered chatbot leveraging OpenA
 - Persistent chat history within session
 - Streaming responses for enhanced user experience
 - Easy-to-use web interface
-
-## Demo
-![Chat Assistant Demo](./assets/demo.png)
 
 ## Prerequisites
 

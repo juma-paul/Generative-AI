@@ -2,3 +2,4 @@ env/
 .env
 text/
 stream-env/
+email-env/

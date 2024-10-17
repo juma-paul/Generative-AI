@@ -88,3 +88,9 @@ A sophisticated email response generation system with multi-language support and
 
 ## License
 MIT License
+
+Project Link: [Email to customer](https://github.com/juma-paul/customer-support-chatbot/tree/main/email-to-cutomer)
+
+## Presentation
+You can view the project presentation [here](https://docs.google.com/presentation/d/12aVB4NvooXxhENyKFiDMbaIGEBaj6-EFcGav9Ws7xB0/edit?usp=sharing).
+

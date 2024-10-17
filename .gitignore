@@ -3,3 +3,4 @@ env/
 text/
 stream-env/
 email-env/
+__pycache__/

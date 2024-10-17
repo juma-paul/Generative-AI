@@ -1,0 +1,184 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom CSS */
+
+/* General container styling */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the header or language selector */
+.language-selector {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.language-selector select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1em;
+  display: inline-block;
+}
+
+/* Text area for comment input */
+.question-section {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 150px;
+  font-size: 1em;
+}
+
+/* Section for translation options */
+.translate-option {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.translate-option label {
+  font-size: 1.1em;
+}
+
+.translate-option input {
+  cursor: pointer;
+}
+
+/* Styling for the generated response sections */
+.answer-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.answer-section p {
+  font-size: 1.2em;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.answer-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 150px;
+  font-size: 1em;
+  background-color: #fff;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Styling for submit button */
+.submit-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Error message styling */
+.error-message {
+  color: #ff0000;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Sentiment and Summary section */
+.sentiment-summary-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.sentiment-summary-section p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+/* Styling for mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .language-selector select,
+  textarea {
+    width: 100%;
+  }
+
+  .translate-option {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .translate-option label {
+    margin-bottom: 5px;
+  }
+}

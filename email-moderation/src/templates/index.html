@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Email Generator</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --background-color: #f3f4f6;
+            --border-color: #e5e7eb;
+            --warning-color: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        select, button {
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .translation-options, .generation-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content-area {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .text-area {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .info-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .moderation-warning {
+            background-color: #fef2f2;
+            border: 1px solid var(--warning-color);
+            color: var(--warning-color);
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .product-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-label {
+            margin-left: 10px;
+            vertical-align: super;
+        }
+
+        .moderation-feedback {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .moderation-feedback h4 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Customer Service Email Generator</h1>
+        </div>
+
+        <div class="generation-options">
+            <label class="switch">
+                <input type="checkbox" id="useSystemComment" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Use System Generated Comments</span>
+        </div>
+
+        <div class="controls">
+            <select id="languageSelect">
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Chinese">Chinese</option>
+            </select>
+            <button onclick="getRandomProduct()">Generate New Email</button>
+        </div>
+
+        <div class="translation-options">
+            <label>
+                <input type="checkbox" id="translateComment"> Translate Comment
+            </label>
+            <label>
+                <input type="checkbox" id="translateEmail"> Translate Email
+            </label>
+        </div>
+
+        <div class="product-info" id="productInfo">
+            <h3>Selected Product</h3>
+            <p>Click "Generate New Email" to start</p>
+        </div>
+        <div id="moderation-feedback" class="moderation-feedback">
+        <h4>Moderation Feedback</h4>
+        <p id="moderation-message"></p>
+    </div>
+
+        <div class="moderation-warning" id="moderationWarning"></div>
+
+        <div class="content-area">
+            <div class="text-area">
+                <h3>Customer Comment</h3>
+                <textarea id="commentArea" placeholder="Enter your comment here..."></textarea>
+            </div>
+            <div class="text-area">
+                <h3>Generated Email</h3>
+                <textarea id="emailArea" readonly></textarea>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Analysis</h3>
+            <p><strong>Subject:</strong> <span id="emailSubject">-</span></p>
+            <p><strong>Summary:</strong> <span id="commentSummary">-</span></p>
+            <p><strong>Sentiment:</strong> <span id="sentimentAnalysis">-</span></p>
+            <div id="moderationDetails"></div>
+        </div>
+
+        <div id="loading" class="loading">
+            Processing...
+        </div>
+    </div>
+
+    <script>
+        let currentProduct = null;
+
+function updateCommentAreaState() {
+    const useSystemComment = document.getElementById('useSystemComment').checked;
+    const commentArea = document.getElementById('commentArea');
+    commentArea.readOnly = useSystemComment;
+    commentArea.placeholder = useSystemComment ? 
+        "System will generate a comment" : 
+        "Enter your comment here...";
+}
+
+document.getElementById('useSystemComment').addEventListener('change', updateCommentAreaState);
+updateCommentAreaState();
+
+async function getRandomProduct() {
+    try {
+        const response = await fetch('/get_random_product');
+        const product = await response.json();
+        currentProduct = product;
+        
+        document.getElementById('productInfo').innerHTML = `
+            <h3>Selected Product: ${product.name}</h3>
+            <p><strong>Category:</strong> ${product.category}</p>
+            <p><strong>Price:</strong> $${product.price}</p>
+            <p><strong>Description:</strong> ${product.description}</p>
+        `;
+
+        generateEmail();
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('productInfo').innerHTML = `
+            <h3>Error Loading Product</h3>
+            <p>Please try again later</p>
+        `;
+    }
+}
+
+async function generateEmail() {
+    if (!currentProduct) return;
+
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+
+    try {
+        const useSystemComment = document.getElementById('useSystemComment').checked;
+        const userComment = document.getElementById('commentArea').value;
+
+        const response = await fetch('/generate_email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                product_data: currentProduct,
+                language: document.getElementById('languageSelect').value,
+                translate_comment: document.getElementById('translateComment').checked,
+                translate_email: document.getElementById('translateEmail').checked,
+                use_system_comment: useSystemComment,
+                user_comment: userComment
+            })
+        });
+
+        const data = await response.json();
+        
+        // Update comment area if using system-generated comments
+        if (useSystemComment) {
+            document.getElementById('commentArea').value = data.comment;
+        }
+        
+        document.getElementById('emailArea').value = data.email;
+        document.getElementById('emailSubject').textContent = data.subject;
+        document.getElementById('commentSummary').textContent = data.summary;
+        document.getElementById('sentimentAnalysis').textContent = data.sentiment;
+
+        // Handle moderation results
+        const moderationWarning = document.getElementById('moderationWarning');
+        const moderationDetails = document.getElementById('moderationDetails');
+        
+        if (data.moderation_result && data.moderation_result.flagged) {
+            moderationWarning.style.display = 'block';
+            moderationWarning.innerHTML = 'Content was flagged for moderation.';
+            
+            const categories = Object.keys(data.moderation_result.categories).join(', ');
+            moderationDetails.innerHTML = `
+                <h4>Moderation Details</h4>
+                <p><strong>Flagged Categories:</strong> ${categories}</p>
+                ${data.original_comment ? `
+                    <p><strong>Original Comment:</strong></p>
+                    <p style="color: var(--warning-color);">${data.original_comment}</p>
+                ` : ''}
+            `;
+        } else {
+            moderationWarning.style.display = 'none';
+            moderationDetails.innerHTML = '';
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('emailArea').value = 'Error generating email. Please try again.';
+    } finally {
+        loading.style.display = 'none';
+    }
+}
+
+// Event listeners for language and translation changes
+document.getElementById('languageSelect').addEventListener('change', generateEmail);
+document.getElementById('translateComment').addEventListener('change', generateEmail);
+document.getElementById('translateEmail').addEventListener('change', generateEmail);
+document.getElementById('commentArea').addEventListener('change', function() {
+    if (!document.getElementById('useSystemComment').checked) {
+        generateEmail();
+    }
+});
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Email Generator</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --background-color: #f3f4f6;
+            --border-color: #e5e7eb;
+            --warning-color: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        select, button {
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .translation-options, .generation-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content-area {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .text-area {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .info-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .moderation-warning {
+            background-color: #fef2f2;
+            border: 1px solid var(--warning-color);
+            color: var(--warning-color);
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .product-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-label {
+            margin-left: 10px;
+            vertical-align: super;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Customer Service Email Generator</h1>
+        </div>
+
+        <div class="generation-options">
+            <label class="switch">
+                <input type="checkbox" id="useSystemComment" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Use System Generated Comments</span>
+            
+            <label class="switch">
+                <input type="checkbox" id="includeFlaggedContent">
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Include Test Content for Moderation</span>
+        </div>
+
+        <div class="controls">
+            <select id="languageSelect">
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Chinese">Chinese</option>
+            </select>
+            <button onclick="getRandomProduct()">Generate New Email</button>
+        </div>
+
+        <div class="translation-options">
+            <label>
+                <input type="checkbox" id="translateComment"> Translate Comment
+            </label>
+            <label>
+                <input type="checkbox" id="translateEmail"> Translate Email
+            </label>
+        </div>
+
+        <div class="product-info" id="productInfo">
+            <h3>Selected Product</h3>
+            <p>Click "Generate New Email" to start</p>
+        </div>
+
+        <div class="moderation-warning" id="moderationWarning"></div>
+
+        <div class="content-area">
+            <div class="text-area">
+                <h3>Customer Comment</h3>
+                <textarea id="commentArea" placeholder="Enter your comment here..."></textarea>
+            </div>
+            <div class="text-area">
+                <h3>Generated Email</h3>
+                <textarea id="emailArea" readonly></textarea>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Analysis</h3>
+            <p><strong>Subject:</strong> <span id="emailSubject">-</span></p>
+            <p><strong>Summary:</strong> <span id="commentSummary">-</span></p>
+            <p><strong>Sentiment:</strong> <span id="sentimentAnalysis">-</span></p>
+            <div id="moderationDetails"></div>
+        </div>
+
+        <div id="loading" class="loading">
+            Processing...
+        </div>
+    </div>
+
+    <script>
+        let currentProduct = null;
+
+function updateCommentAreaState() {
+    const useSystemComment = document.getElementById('useSystemComment').checked;
+    const commentArea = document.getElementById('commentArea');
+    commentArea.readOnly = useSystemComment;
+    commentArea.placeholder = useSystemComment ? 
+        "System will generate a comment" : 
+        "Enter your comment here...";
+}
+
+document.getElementById('useSystemComment').addEventListener('change', updateCommentAreaState);
+updateCommentAreaState();
+
+async function getRandomProduct() {
+    try {
+        const response = await fetch('/get_random_product');
+        const product = await response.json();
+        currentProduct = product;
+        
+        document.getElementById('productInfo').innerHTML = `
+            <h3>Selected Product: ${product.name}</h3>
+            <p><strong>Category:</strong> ${product.category}</p>
+            <p><strong>Price:</strong> $${product.price}</p>
+            <p><strong>Description:</strong> ${product.description}</p>
+        `;
+
+        generateEmail();
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('productInfo').innerHTML = `
+            <h3>Error Loading Product</h3>
+            <p>Please try again later</p>
+        `;
+    }
+}
+
+async function generateEmail() {
+    if (!currentProduct) return;
+
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+
+    try {
+        const useSystemComment = document.getElementById('useSystemComment').checked;
+        const userComment = document.getElementById('commentArea').value;
+
+        const response = await fetch('/generate_email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                product_data: currentProduct,
+                language: document.getElementById('languageSelect').value,
+                translate_comment: document.getElementById('translateComment').checked,
+                translate_email: document.getElementById('translateEmail').checked,
+                use_system_comment: useSystemComment,
+                user_comment: userComment,
+                include_flagged_content: document.getElementById('includeFlaggedContent').checked
+            })
+        });
+
+        const data = await response.json();
+        
+        // Update comment area if using system-generated comments
+        if (useSystemComment) {
+            document.getElementById('commentArea').value = data.comment;
+        }
+        
+        document.getElementById('emailArea').value = data.email;
+        document.getElementById('emailSubject').textContent = data.subject;
+        document.getElementById('commentSummary').textContent = data.summary;
+        document.getElementById('sentimentAnalysis').textContent = data.sentiment;
+
+        // Handle moderation results
+        const moderationWarning = document.getElementById('moderationWarning');
+        const moderationDetails = document.getElementById('moderationDetails');
+        
+        if (data.moderation_result && data.moderation_result.flagged) {
+            moderationWarning.style.display = 'block';
+            moderationWarning.innerHTML = 'Content was flagged for moderation.';
+            
+            const categories = Object.keys(data.moderation_result.categories).join(', ');
+            moderationDetails.innerHTML = `
+                <h4>Moderation Details</h4>
+                <p><strong>Flagged Categories:</strong> ${categories}</p>
+                ${data.original_comment ? `
+                    <p><strong>Original Comment:</strong></p>
+                    <p style="color: var(--warning-color);">${data.original_comment}</p>
+                ` : ''}
+            `;
+        } else {
+            moderationWarning.style.display = 'none';
+            moderationDetails.innerHTML = '';
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('emailArea').value = 'Error generating email. Please try again.';
+    } finally {
+        loading.style.display = 'none';
+    }
+}
+
+// Event listeners for language and translation changes
+document.getElementById('languageSelect').addEventListener('change', generateEmail);
+document.getElementById('translateComment').addEventListener('change', generateEmail);
+document.getElementById('translateEmail').addEventListener('change', generateEmail);
+document.getElementById('commentArea').addEventListener('change', function() {
+    if (!document.getElementById('useSystemComment').checked) {
+        generateEmail();
+    }
+});
+</script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Email Generator</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --background-color: #f3f4f6;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        select, button {
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .translation-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .text-area {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        .info-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .product-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Customer Service Email Generator</h1>
+        </div>
+
+        <div class="controls">
+            <select id="languageSelect">
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Chinese">Chinese</option>
+            </select>
+            <button onclick="getRandomProduct()">Generate Email</button>
+        </div>
+
+        <div class="translation-options">
+            <label>
+                <input type="checkbox" id="translateComment"> Translate Comment
+            </label>
+            <label>
+                <input type="checkbox" id="translateEmail"> Translate Email
+            </label>
+        </div>
+
+        <div class="product-info" id="productInfo">
+            <h3>Selected Product</h3>
+            <p>Click "Get Random Product" to start</p>
+        </div>
+
+        <div class="content-area">
+            <div class="text-area">
+                <h3>Generated Comment</h3>
+                <textarea id="commentArea" readonly></textarea>
+            </div>
+            <div class="text-area">
+                <h3>Generated Email</h3>
+                <textarea id="emailArea" readonly></textarea>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Analysis</h3>
+            <p><strong>Subject:</strong> <span id="emailSubject">-</span></p>
+            <p><strong>Summary:</strong> <span id="commentSummary">-</span></p>
+            <p><strong>Sentiment:</strong> <span id="sentimentAnalysis">-</span></p>
+        </div>
+
+        <div id="loading" class="loading">
+            Processing...
+        </div>
+    </div>
+
+    <script>
+        let currentProduct = null;
+
+        async function getRandomProduct() {
+            try {
+                const response = await fetch('/get_random_product');
+                const product = await response.json();
+                currentProduct = product;
+                
+                document.getElementById('productInfo').innerHTML = `
+                    <h3>Selected Product: ${product.name}</h3>
+                    <p><strong>Category:</strong> ${product.category}</p>
+                    <p><strong>Price:</strong> $${product.price}</p>
+                    <p><strong>Description:</strong> ${product.description}</p>
+                `;
+
+                generateEmail();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function generateEmail() {
+            if (!currentProduct) return;
+
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            try {
+                const response = await fetch('/generate_email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        product_data: currentProduct,
+                        language: document.getElementById('languageSelect').value,
+                        translate_comment: document.getElementById('translateComment').checked,
+                        translate_email: document.getElementById('translateEmail').checked
+                    })
+                });
+
+                const data = await response.json();
+                
+                document.getElementById('commentArea').value = data.comment;
+                document.getElementById('emailArea').value = data.email;
+                document.getElementById('emailSubject').textContent = data.subject;
+                document.getElementById('commentSummary').textContent = data.summary;
+                document.getElementById('sentimentAnalysis').textContent = data.sentiment;
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        // Event listeners for language and translation changes
+        document.getElementById('languageSelect').addEventListener('change', generateEmail);
+        document.getElementById('translateComment').addEventListener('change', generateEmail);
+        document.getElementById('translateEmail').addEventListener('change', generateEmail);
+    </script>
+</body>
+</html> -->

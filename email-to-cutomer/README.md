@@ -38,25 +38,15 @@ A sophisticated email response generation system with multi-language support and
 ```
 
 ## Testing
-### API Endpoint Testing
 ![Test 1](./assets/1.png)
-*Figure 1: API endpoint testing results showing successful requests and responses*
 
-### Response Quality Validation
 ![Test 2](./assets/2.png)
-*Figure 2: Response quality metrics and validation results*
 
-### Error Handling Tests
 ![Test 3](./assets/3.png)
-*Figure 3: Error handling and edge case test results*
 
-### Performance Monitoring
 ![Test 4](./assets/4.png)
-*Figure 4: System performance metrics under various loads*
 
-### Cross-browser Testing
 ![Test 5](./assets/5.png)
-*Figure 5: Cross-browser compatibility test results*
 
 ## Enhancement Ideas
 1. Custom email template system

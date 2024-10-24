@@ -46,7 +46,7 @@ The project is implemented in stages, focusing on specific functionalities:
 
 ## Links and Resources
 
-- [Link to Project](Link_Here)
+- [Link to Project](https://github.com/juma-paul/customer-support-chatbot/tree/main/email-moderation)
 - [Presentation Slides](https://docs.google.com/presentation/d/1PUdRPgvwkGpeLEmMkuaoGF02ZlIyx23pBQpk2diycfc/edit?usp=sharing)
 
 

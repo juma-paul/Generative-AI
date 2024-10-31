@@ -1,0 +1,5 @@
+gradio
+Pillow
+gTTS
+requests
+python-dotenv

@@ -1,0 +1,5 @@
+.env
+game-env/
+*.mp3
+__pycache__/
+.gradio/

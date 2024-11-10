@@ -23,7 +23,7 @@ An intelligent customer support system built with Flask and OpenAI's GPT, levera
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/sfbu-customer-support.git
+git clone <repository url>t
 cd sfbu-customer-support
 ```
 
@@ -36,27 +36,6 @@ pip install -r requirements.txt
 ```bash
 cp .env.example .env
 # Add your OpenAI API key to .env file
-```
-
-## Project Structure
-```
-sfbu-customer-support/
-├── app/
-│   ├── __init__.py
-│   ├── config.py           # Configuration settings
-│   ├── document_loader.py  # Document processing
-│   ├── text_splitter.py    # Text chunking
-│   ├── embeddings_manager.py
-│   ├── vector_store.py     # Vector database management
-│   ├── retriever.py        # Document retrieval
-│   ├── llm_manager.py      # LLM integration
-│   └── main.py            # Application entry point
-├── static/
-│   ├── css/
-│   └── js/
-├── templates/
-│   └── index.html
-└── requirements.txt
 ```
 
 ## Implementation Steps
@@ -86,7 +65,7 @@ sfbu-customer-support/
 
 1. Start the Flask server
 ```bash
-python run.py
+python3 run.py
 ```
 
 2. Access the web interface
@@ -124,7 +103,6 @@ VECTOR_DB_PATH = "vectorstore"
 
 ## Project Documentation
 - [Google Slides Presentation](https://docs.google.com/presentation/d/1saWrs2FMyTSwFIYWc92XNO7MlsDFMGkOAJQbtbulTIw/edit?usp=sharing)
-- [Project Portfolio](https://github.com/yourusername/portfolio)
 
 ## Machine Learning Components
 - ChatGPT Integration

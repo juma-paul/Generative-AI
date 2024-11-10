@@ -134,4 +134,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Project Link: [https://github.com/yourusername/sfbu-customer-support](https://github.com/yourusername/sfbu-customer-support)
+Project Link: [https://github.com/yourusername/sfbu-customer-support](https://github.com/juma-paul/customer-support-chatbot/tree/main/lang-chain)

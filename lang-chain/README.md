@@ -1,137 +1,70 @@
 # SFBU Customer Support System
 
-## Overview
-An intelligent customer support system built with Flask and OpenAI's GPT, leveraging Retrieval Augmented Generation (RAG) for accurate, context-aware responses based on local documentation.
+An intelligent customer support system built with Flask and OpenAI's GPT, leveraging Retrieval Augmented Generation (RAG) for context-aware document search and responses.
+
+![Alt text](./uploads/main-page.png)
 
 
 ## Features
-- Document processing and vectorization
-- Semantic search capabilities
-- Conversational memory for follow-up questions
-- Web-based user interface
-- Real-time response generation
-- Context-aware answers from local documents
+- PDF and text document processing with vectorization
+- Semantic search with ChromaDB
+- Real-time chat interface
+- Document upload functionality
+- Context-aware responses using RAG
 
 ## Tech Stack
-- **Backend**: Flask
-- **AI/ML**: OpenAI GPT-3.5, LangChain
+- **Backend**: Flask, LangChain
+- **AI/ML**: OpenAI GPT-3.5
 - **Vector Store**: ChromaDB
-- **Frontend**: HTML, CSS, JavaScript
-- **Documentation**: PDF, Web content processing
+- **Frontend**: HTML, TailwindCSS, JavaScript
 
-## Installation
+## Setup
 
-1. Clone the repository
+1. Clone the repository:
 ```bash
-git clone <repository url>t
-cd sfbu-customer-support
+git clone https://github.com/juma-paul/customer-support-chatbot/tree/main
+cd lang-chain
 ```
 
-2. Install dependencies
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Set up environment variables
-```bash
-cp .env.example .env
-# Add your OpenAI API key to .env file
+## API Endpoints
+
+- `POST /api/upload`: Upload documents
+- `POST /api/chat`: Send chat messages
+- `GET /`: Main interface
+
+## Configuration
+
+```python
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+CHUNK_SIZE = 1000
+CHUNK_OVERLAP = 200
+MODEL_NAME = "gpt-3.5-turbo"
+VECTOR_DB_PATH = "vectorstore"
+ALLOWED_EXTENSIONS = {'pdf', 'txt'}
 ```
-
-## Implementation Steps
-
-### 1. Document Processing Pipeline
-- Document loading from multiple sources
-- Text splitting for optimal processing
-- Embedding generation using OpenAI
-- Vector store creation with ChromaDB
-
-### 2. Retrieval System
-- Similarity search implementation
-- Context-aware document retrieval
-- Relevance ranking
-
-### 3. Conversation Management
-- Chat memory implementation
-- Follow-up question handling
-- Context preservation
-
-### 4. Web Interface
-- Real-time chat interface
-- Document upload functionality
-- Response visualization
 
 ## Usage
 
-1. Start the Flask server
+1. Start the server:
 ```bash
 python3 run.py
 ```
 
-2. Access the web interface
+2. Access the interface:
 ```
 http://localhost:5000
 ```
 
 3. Upload documents and start chatting!
 
-## API Endpoints
-
-### Document Management
-```python
-POST /api/upload
-GET  /api/documents
-```
-
-### Chat Interface
-```python
-POST /api/chat
-GET  /api/chat/history
-```
-
-## Configuration
-
-Key configurations in `config.py`:
-```python
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 200
-MODEL_NAME = "gpt-3.5-turbo"
-TEMPERATURE = 0
-VECTOR_DB_PATH = "vectorstore"
-```
+## License
+MIT License
 
 ## Project Documentation
 - [Google Slides Presentation](https://docs.google.com/presentation/d/1saWrs2FMyTSwFIYWc92XNO7MlsDFMGkOAJQbtbulTIw/edit?usp=sharing)
-
-## Machine Learning Components
-- ChatGPT Integration
-- Document Embeddings
-- Similarity Search
-- Conversation Management
-
-## Future Enhancements
-- [ ] Multi-language support
-- [ ] Advanced document preprocessing
-- [ ] Real-time document updates
-- [ ] Analytics dashboard
-- [ ] Custom training capabilities
-
-## Contributing
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-- OpenAI for GPT models
-- LangChain for the RAG framework
-- SFBU for project guidance
-
-## Contact
-
-Project Link: [https://github.com/juma-paul/customer-support-chatbot/tree/main/lang-chain](https://github.com/juma-paul/customer-support-chatbot/tree/main/lang-chain)
+- [Project Link](https://github.com/juma-paul/customer-support-chatbot/tree/main/lang-chain)

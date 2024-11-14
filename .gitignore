@@ -5,3 +5,5 @@ stream-env/
 email-env/
 __pycache__/
 lang-env/
+__pycache__/
+uploads/

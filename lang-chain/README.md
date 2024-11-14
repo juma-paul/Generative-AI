@@ -2,7 +2,7 @@
 
 An intelligent customer support system built with Flask and OpenAI's GPT, leveraging Retrieval Augmented Generation (RAG) for context-aware document search and responses.
 
-![Alt text](./uploads/main-page.png)
+![Alt text](./assets/main-page.png)
 
 
 ## Features

@@ -58,3 +58,7 @@ response = client.chat.completions.create(
 
 The model classifies drugs into the different categories:
 ![](./data/cate.png)
+
+## Link to Project
+
+- Please find link to project [Here](https://github.com/juma-paul/customer-support-chatbot/tree/main/fine-tuning-drug-classification)

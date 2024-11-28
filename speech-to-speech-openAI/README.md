@@ -70,4 +70,4 @@ assistant = VoiceAssistant(
 MIT License
 
 ## Project Link
-Please find link to the project [here]()
+Please find link to the project [here](https://github.com/juma-paul/customer-support-chatbot/blob/main/speech-to-speech-openAI)

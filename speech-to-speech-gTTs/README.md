@@ -23,8 +23,8 @@ The voice assistant is a real-time voice assistant that leverages speech recogni
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/fiwa-voice-assistant.git
-   cd fiwa-voice-assistant
+   git clone https://github.com/juma-paul/customer-support-chatbot/tree/main/speech-to-speech-gTTs
+   cd speech-to-speech-gTTs
    ```
 
 2. Install required dependencies
@@ -108,3 +108,6 @@ MIT License
 ## Contributing
 
 Contributions are welcome! Please read the contributing guidelines before getting started.
+
+## Project Link
+Please find link to the project [here](https://github.com/juma-paul/customer-support-chatbot/tree/main/spech-to-speech-gTTs)

@@ -8,3 +8,4 @@ lang-env/
 __pycache__/
 uploads/
 table.html
+gtts-env/

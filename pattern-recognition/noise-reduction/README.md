@@ -24,8 +24,8 @@ This Python implementation demonstrates noise reduction techniques using Gaussia
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/gaussian-noise-reduction.git
-cd gaussian-noise-reduction
+git clone https://github.com/juma-paul/customer-support-chatbot/tree/main/pattern-recognition/noise-reduction
+cd noise-reduction
 ```
 
 2. Install dependencies:
@@ -68,4 +68,4 @@ Contributions are welcome! Please open an issue or submit a pull request.
 - Gaussian Filtering in Image Processing [Link [here](https://en.wikipedia.org/wiki/Gaussian_filter)]
 
 ## Resources
-- Project Link [here](https://github.com/your-username/gaussian-noise-reduction)
+- Project Link [here](https://github.com/juma-paul/customer-support-chatbot/tree/main/pattern-recognition/noise-reduction)

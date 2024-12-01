@@ -4,7 +4,7 @@
 
 This Python implementation provides a robust image segmentation technique using Otsu's method, an adaptive thresholding algorithm that automatically determines the optimal threshold for separating foreground and background in grayscale images.
 
-![Otsu Thresholding Placeholder](./images/original-and-transformed.png)
+![Image Placeholder](./images/original-and-transformed.png)
 
 ## Features
 
@@ -23,7 +23,8 @@ This Python implementation provides a robust image segmentation technique using 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/otsu-thresholding.git
+git clone https://github.com/juma-paul/customer-support-chatbot/tree/main/pattern-recognition/otsu-thresholding
+cd otsu-thresholding
 ```
 
 2. Install dependencies:
@@ -64,4 +65,4 @@ Contributions are welcome! Please open an issue or submit a pull request.
 - A threshold selection method from gray-level histograms [Link [here](https://ieeexplore.ieee.org/document/4310076)]
 
 ## Resources
-- Project Link [here]()
+- Project Link [here](https://github.com/juma-paul/customer-support-chatbot/tree/main/pattern-recognition/otsu-thresholding)

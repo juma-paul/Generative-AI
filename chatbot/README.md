@@ -22,7 +22,7 @@ The chatbot also supports voice input/output using speech recognition and text-t
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/your-repository/chatbot.git
+git clone https://github.com/juma-paul/customer-support-chatbot/tree/main/chatbot
 cd chatbot
 ```
 
@@ -40,7 +40,7 @@ openai_api_key=YOUR_API_KEY_HERE
 ## Running the Application
 Start the application by running:
 ```bash
-python chatbot.py
+python3 chatbot.py
 ```
 The application will start a web interface using Panel for interaction.
 
@@ -79,3 +79,7 @@ MIT License
 - OpenAI's GPT-4
 - LangChain
 - Pydub and gTTS
+
+## Resources
+- Project link [here](https://github.com/juma-paul/customer-support-chatbot/tree/main/chatbot)
+- Presentation slides [here](https://docs.google.com/presentation/d/14k44RqKjAKcAWfh4UVnsTNik0hpG16bBRL5IWg8yLLI/edit?usp=sharing)

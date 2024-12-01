@@ -24,8 +24,8 @@ This Python implementation provides a powerful image processing technique for en
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/histogram-equalization
-cd histogram-equalization
+git clone https://github.com/juma-paul/customer-support-chatbot/tree/main/pattern-recognition/histogram
+cd histogram
 ```
 
 2. Install dependencies:
@@ -48,15 +48,10 @@ python3 histogram_equalization.py
 ## Example Usage
 
 ```python
-image_file_path = "/content/nola-cat.png"
+image_file_path = "path-to-image.png"
 
-# Load the image and convert it to grayscale
 image_from_file = Image.from_image_file(image_file_path)
-
-# Apply histogram equalization
 transformed_pixels = image_from_file.apply_histogram_equalization()
-
-# Display original and transformed images
 original_img = PILImage.open(image_file_path).convert('L')
 display_images(original_img, transformed_pixels)
 ```
@@ -75,4 +70,4 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 ## Project Repository
 
-[View Project on GitHub](https://github.com/your-username/histogram-equalization)
+- View Project on GitHub [here](https://github.com/juma-paul/customer-support-chatbot/tree/main/pattern-recognition/histogram)

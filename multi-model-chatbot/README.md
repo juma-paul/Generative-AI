@@ -1,7 +1,7 @@
 # Multi-Modal Chatbot
 
 ## Overview
-The **Multi-Modal Chatbot** is a web-based AI application that enhances customer support through multimodal interactions. It supports both **text and voice** communication and utilizes document-based context retrieval for improved responses.
+The **Multi-Modal Chatbot** is a web-based AI application that enhances user interactions through multimodal communication. It supports both **text and voice** inputs and utilizes document-based context retrieval to provide more accurate responses.
 
 ![conversation tab](./images/conv.png)
 
@@ -20,7 +20,7 @@ The **Multi-Modal Chatbot** is a web-based AI application that enhances customer
 
 ## Example Use Cases
 - **Voice Interaction:** Click **Use Speech Input/Output**, say the wake word (**hey computer**) and then query, and receive an audio response.
-- **Start New Conversation:** Reset the chat session with **Start New Conversation** while keeping the chat history intact.
+- **Start New Conversation:** Reset the chat session with **Start New Conversation** while keeping the chat history intact. Say **stop** to end the conversation.
 - **Document-Based Q&A:** Upload documents and ask questions based on their content.
 
 ## Technical Architecture
@@ -58,7 +58,7 @@ The **Multi-Modal Chatbot** is a web-based AI application that enhances customer
 ### Installation Steps
 ```bash
 # Clone repository
-git clone [repository-url]
+git clone https://github.com/juma-paul/customer-support-chatbot/tree/main/multi-model-chatbot
 cd multi-model-chatbot # activate virtual environment
 
 # Install dependencies
@@ -69,6 +69,6 @@ panel serve chatbot.py --autoreload
 ```
 
 ## Repository Link
-You can access the full codebase and contribute to the project via [GitHub]().
+You can access the full codebase and contribute to the project via [GitHub](https://github.com/juma-paul/customer-support-chatbot/tree/main/multi-model-chatbot).
 
 

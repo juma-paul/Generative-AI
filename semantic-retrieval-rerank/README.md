@@ -14,6 +14,37 @@ The main components of the implementation are:
 - **Keyword Search:** Keyword-based search using Weaviate's BM25 functionality.
 - **Reranking:** The Cohere reranking API is used to further refine the search results based on relevance to the user's query.
 
+## Installation
+
+- Clone the GitHub repository:
+    ```
+    git clone https://github.com/juma-paul/customer-support-chatbot.git
+    ```
+- Navigate to the project directory:
+    ```
+    cd semantic-retrieval-rerank
+    ```
+- Create a virtual environment (recommended):
+    ```
+    python -m venv env
+    source env/bin/activate  # On Windows, use `env\Scripts\activate`
+    ```
+
+- Install the required Python packages:
+    ```
+    pip install -r requirements.txt
+    ```
+- Create a .env file in the project root directory and add the following environment variables:
+    ```
+    weaviate_api_url=<your_weaviate_cloud_url>
+    weaviate_api_key=<your_weaviate_cloud_api_key>
+    openai_api_key=<your_openai_api_key>
+    cohere_api_key=<your_cohere_api_key>
+    ```
+- Run the main script:
+    ```
+    python main.py
+    ```
 ## Test
 The project is tested by running sample queries and verifying the accuracy and relevance of the search results, both before and after reranking.
 ![screenshot of test results](./utils/images/image.png)
@@ -35,4 +66,4 @@ This project demonstrates the power of combining keyword-based and semantic-base
 
 ## Resources
 - [Presentation Slides](https://docs.google.com/presentation/d/1JGqyIgRRp9yaHgvXKaToPQoJGYR2eBiTYu72WKRsTtI/edit?usp=sharing)
-- [Github Repository]()
+- [Github Repository](https://github.com/juma-paul/customer-support-chatbot/tree/main/semantic-retrieval-rerank)

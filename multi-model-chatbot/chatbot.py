@@ -131,6 +131,7 @@ workflow.add_node("model", call_model)
 memory = MemorySaver()
 app = workflow.compile(checkpointer=memory)
 
+# 
 config = {"configurable": {"thread_id": "abc123"}}
 
 # Initialize the default state with an empty chat history

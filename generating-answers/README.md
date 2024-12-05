@@ -3,6 +3,8 @@
 ## Introduction
 This project demonstrates a comprehensive pipeline for generating answers from a given text corpus using state-of-the-art generative AI techniques. The system transforms raw text into an intelligent question-answering tool through advanced natural language processing methods.
 
+![image](./images/one.png)
+
 ## Design
 The solution follows a structured workflow:
 1. **Input Text**: Source document on Generative AI landscape
@@ -55,7 +57,7 @@ This project showcases the potential of generative AI in creating intelligent, c
 - MIT License
 
 ## Project Repository
-- View Project on GitHub [here]()
+- View Project on GitHub [here](https://github.com/juma-paul/customer-support-chatbot/tree/main/generating-answers)
 
 ## Presentation slides
 - View Presentation slides [here](https://docs.google.com/presentation/d/1aQCaPJbAp7ZosUXjZKwmQepIQ1Db57Tc5k64fsaF37Q/edit?usp=sharing)

@@ -47,6 +47,7 @@ The main components of the implementation are:
     ```
 ## Test
 The project is tested by running sample queries and verifying the accuracy and relevance of the search results, both before and after reranking.
+
 ![screenshot of test results](./utils/images/image.png)
 
 ## Enhancement Ideas
